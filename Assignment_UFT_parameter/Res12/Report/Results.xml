@@ -1,0 +1,1017 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Eastern Standard Time">
+<General productName="Micro Focus UFT One" productVer="2022" os="Windows 11" host="LAPTOP-KRQ5GB81"><DocLocation><![CDATA[C:\Users\swapn\Documents\UFT One\Assignment_UFT_parameter]]></DocLocation></General>
+<Doc rID="T1"   productName= "Micro Focus UFT One"  >
+<DName><![CDATA[Assignment_UFT_parameter]]></DName>
+<Res><![CDATA[Res12]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xlsx]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[OpenApp]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:27]]></Time>
+<TimeTick>1666051647</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[Run "C:\Program Files (x86)\Micro Focus\UFT One\samples\Flights Application\FlightsGUI.exe",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run "C:\Program Files (x86)\Micro Focus\UFT One\samples\Flights Application\FlightsGUI.exe",1]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:27]]></Time>
+<TimeTick>1666051647</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="11" status="Passed" Source="OpenApp" SourceLine="1" >
+<Disp><![CDATA[Run "C:\Program Files (x86)\Micro Focus\UFT One\samples\Flights Application\FlightsGUI.exe",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="10" status="Passed" Source="OpenApp" SourceLine="1" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:24" eTime="10/17/2022 - 20:07:27" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Passed" >
+<Disp><![CDATA[OpenApp Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T7">
+<AName><![CDATA[login]]></AName>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:28]]></Time>
+<TimeTick>1666051648</TimeTick>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[agentName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["john"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:28]]></Time>
+<TimeTick>1666051648</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="16" Source="login" SourceLine="0" >
+<Disp><![CDATA[agentName.Set]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf218.xml]]></Path>
+<ASHilite><![CDATA[-132375512]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["634db7899910f6a925de"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:28]]></Time>
+<TimeTick>1666051648</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="18" Source="login" SourceLine="1" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf219.xml]]></Path>
+<ASHilite><![CDATA[-132375656]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[OK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:29]]></Time>
+<TimeTick>1666051649</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="20" Source="login" SourceLine="2" >
+<Disp><![CDATA[OK.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="15" Source="login" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf217.xml]]></Path>
+<ASHilite><![CDATA[1117726]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:28" eTime="10/17/2022 - 20:07:29" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="13" >
+<Disp><![CDATA[login Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T12">
+<AName><![CDATA[flightFinder]]></AName>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:29]]></Time>
+<TimeTick>1666051649</TimeTick>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Los Angeles"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:29]]></Time>
+<TimeTick>1666051649</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="25" Source="flightFinder" SourceLine="0" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf221.xml]]></Path>
+<ASHilite><![CDATA[-132374840]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[London to Paris,  all]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:30]]></Time>
+<TimeTick>1666051650</TimeTick>
+<HtmlStep rID="T16">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Bitmap Checkpoint "London to Paris,  all inclusive": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 10/17/2022 - 20:07:30</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table></body></html>]]></HTML>
+<TimeTick>1666051650</TimeTick>
+<NodeArgs eType="Verification" icon="10" nRep="27" status="Passed" Source="flightFinder" SourceLine="1" >
+<Disp><![CDATA[Checkpoint "London to Paris,  all inclusive"]]></Disp>
+<BtmPane vType="Mercury.ACXSnapshotViewerObj" >
+<Path><![CDATA[Act3\Row0\Bitmap0._report.ini]]></Path>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="10" nRep="26" status="Passed" Source="flightFinder" SourceLine="1" >
+<Disp><![CDATA[London to Paris,  all]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf222.xml]]></Path>
+<ASHilite><![CDATA[-243701208]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Sydney"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:30]]></Time>
+<TimeTick>1666051650</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="29" Source="flightFinder" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf223.xml]]></Path>
+<ASHilite><![CDATA[-132373064]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["20-Dec-22"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:31]]></Time>
+<TimeTick>1666051651</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="31" Source="flightFinder" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf224.xml]]></Path>
+<ASHilite><![CDATA[-132373880]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:31]]></Time>
+<TimeTick>1666051651</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="33" Source="flightFinder" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf225.xml]]></Path>
+<ASHilite><![CDATA[-132371624]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["2"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:32]]></Time>
+<TimeTick>1666051652</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="35" Source="flightFinder" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf226.xml]]></Path>
+<ASHilite><![CDATA[-132370232]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:32]]></Time>
+<TimeTick>1666051652</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="37" Source="flightFinder" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf227.xml]]></Path>
+<ASHilite><![CDATA[0]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="24" status="Passed" Source="flightFinder" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf220.xml]]></Path>
+<ASHilite><![CDATA[2360830]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:29" eTime="10/17/2022 - 20:07:32" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="22" status="Passed" >
+<Disp><![CDATA[flightFinder Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T22">
+<AName><![CDATA[selectFlight]]></AName>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:32]]></Time>
+<TimeTick>1666051652</TimeTick>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA["0", "0"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:33]]></Time>
+<TimeTick>1666051653</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="42" Source="selectFlight" SourceLine="0" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act4\Row0\ssf229.xml]]></Path>
+<ASHilite><![CDATA[-132365048]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:33]]></Time>
+<TimeTick>1666051653</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="44" Source="selectFlight" SourceLine="1" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act4\Row0\ssf230.xml]]></Path>
+<ASHilite><![CDATA[0]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="41" Source="selectFlight" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act4\Row0\ssf228.xml]]></Path>
+<ASHilite><![CDATA[2360830]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:32" eTime="10/17/2022 - 20:07:33" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="39" >
+<Disp><![CDATA[selectFlight Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T26">
+<AName><![CDATA[flightConfirmation]]></AName>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:33]]></Time>
+<TimeTick>1666051653</TimeTick>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Naruto Uzumaki"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:34]]></Time>
+<TimeTick>1666051654</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="49" Source="flightConfirmation" SourceLine="0" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf232.xml]]></Path>
+<ASHilite><![CDATA[-132363224]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[passengerName]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfEdit]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:34]]></Time>
+<TimeTick>1666051654</TimeTick>
+<HtmlStep rID="T30">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "passengerName": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 10/17/2022 - 20:07:34</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">passengerName Results&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<TD class="Text" Title="">text&nbsp;</TD>
+				<TD class="Text" Title="">Naruto Uzumaki&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1666051654</TimeTick>
+<NodeArgs eType="Verification" icon="7" nRep="51" status="Passed" Source="flightConfirmation" SourceLine="1" >
+<Disp><![CDATA[Checkpoint "passengerName"]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf234.xml]]></Path>
+<ASHilite><![CDATA[-132363224]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="7" nRep="50" status="Passed" Source="flightConfirmation" SourceLine="1" >
+<Disp><![CDATA[passengerName]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf233.xml]]></Path>
+<ASHilite><![CDATA[-132363224]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[progBar.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["value", 10, 0, 20000]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:54]]></Time>
+<TimeTick>1666051674</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="53" status="Warning" Source="flightConfirmation" SourceLine="2" >
+<Disp><![CDATA[progBar.WaitProperty]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf235.xml]]></Path>
+<ASHilite><![CDATA[-246921392]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:54]]></Time>
+<TimeTick>1666051674</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="55" Source="flightConfirmation" SourceLine="3" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf236.xml]]></Path>
+<ASHilite><![CDATA[-143548216]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[Order 99 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:55]]></Time>
+<TimeTick>1666051675</TimeTick>
+<HtmlStep rID="T34">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "CheckOrderCompletedText": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 10/17/2022 - 20:07:55</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">CheckOrderCompletedText Results&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<TD class="Text" Title="">enabled&nbsp;</TD>
+				<TD class="Text" Title="">True&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1666051675</TimeTick>
+<NodeArgs eType="Verification" icon="10" nRep="57" status="Passed" Source="flightConfirmation" SourceLine="4" >
+<Disp><![CDATA[Checkpoint "CheckOrderCompletedText"]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf238.xml]]></Path>
+<ASHilite><![CDATA[0]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="10" nRep="56" status="Passed" Source="flightConfirmation" SourceLine="4" >
+<Disp><![CDATA[Order 99 completed]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf237.xml]]></Path>
+<ASHilite><![CDATA[0]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:56]]></Time>
+<TimeTick>1666051676</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="59" Source="flightConfirmation" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf239.xml]]></Path>
+<ASHilite><![CDATA[0]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="48" status="Warning" Source="flightConfirmation" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf231.xml]]></Path>
+<ASHilite><![CDATA[2360830]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:33" eTime="10/17/2022 - 20:07:56" passed="2" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="46" status="Warning" >
+<Disp><![CDATA[flightConfirmation Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T36">
+<AName><![CDATA[CloseApp]]></AName>
+<Summary sTime="10/17/2022 - 20:07:56" eTime="10/17/2022 - 20:07:56" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="61" >
+<Disp><![CDATA[CloseApp Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Warning" >
+<Disp><![CDATA[Assignment_UFT_parameter Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<DIter rID="T37" iterID="2" >
+<Action rID="T38">
+<AName><![CDATA[OpenApp]]></AName>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:57]]></Time>
+<TimeTick>1666051677</TimeTick>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[Run "C:\Program Files (x86)\Micro Focus\UFT One\samples\Flights Application\FlightsGUI.exe",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run "C:\Program Files (x86)\Micro Focus\UFT One\samples\Flights Application\FlightsGUI.exe",1]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:57]]></Time>
+<TimeTick>1666051677</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="69" status="Passed" Source="OpenApp" SourceLine="1" >
+<Disp><![CDATA[Run "C:\Program Files (x86)\Micro Focus\UFT One\samples\Flights Application\FlightsGUI.exe",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="68" status="Passed" Source="OpenApp" SourceLine="1" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:56" eTime="10/17/2022 - 20:07:57" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="65" status="Passed" >
+<Disp><![CDATA[OpenApp Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T41">
+<AName><![CDATA[login]]></AName>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:57]]></Time>
+<TimeTick>1666051677</TimeTick>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[agentName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["john"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:58]]></Time>
+<TimeTick>1666051678</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="74" Source="login" SourceLine="0" >
+<Disp><![CDATA[agentName.Set]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf241.xml]]></Path>
+<ASHilite><![CDATA[-181057848]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["634db7899910f6a925de"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:58]]></Time>
+<TimeTick>1666051678</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="76" Source="login" SourceLine="1" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf242.xml]]></Path>
+<ASHilite><![CDATA[-181057512]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[OK.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:58]]></Time>
+<TimeTick>1666051678</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="78" Source="login" SourceLine="2" >
+<Disp><![CDATA[OK.Click]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf243.xml]]></Path>
+<ASHilite><![CDATA[-181058232]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="73" Source="login" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act2\Row0\ssf240.xml]]></Path>
+<ASHilite><![CDATA[855508]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:57" eTime="10/17/2022 - 20:07:59" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="71" >
+<Disp><![CDATA[login Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T46">
+<AName><![CDATA[flightFinder]]></AName>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:59]]></Time>
+<TimeTick>1666051679</TimeTick>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Denver"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:07:59]]></Time>
+<TimeTick>1666051679</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="83" Source="flightFinder" SourceLine="0" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf245.xml]]></Path>
+<ASHilite><![CDATA[-181053960]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[London to Paris,  all]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:00]]></Time>
+<TimeTick>1666051680</TimeTick>
+<HtmlStep rID="T50">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Bitmap Checkpoint "London to Paris,  all inclusive": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 10/17/2022 - 20:08:00</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table></body></html>]]></HTML>
+<TimeTick>1666051680</TimeTick>
+<NodeArgs eType="Verification" icon="10" nRep="85" status="Passed" Source="flightFinder" SourceLine="1" >
+<Disp><![CDATA[Checkpoint "London to Paris,  all inclusive"]]></Disp>
+<BtmPane vType="Mercury.ACXSnapshotViewerObj" >
+<Path><![CDATA[Act3\Row0\Bitmap0._report_1.ini]]></Path>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="10" nRep="84" status="Passed" Source="flightFinder" SourceLine="1" >
+<Disp><![CDATA[London to Paris,  all]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf246.xml]]></Path>
+<ASHilite><![CDATA[-243704440]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Los Angeles"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:00]]></Time>
+<TimeTick>1666051680</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="87" Source="flightFinder" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf247.xml]]></Path>
+<ASHilite><![CDATA[-245717072]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["10-Dec-22"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:01]]></Time>
+<TimeTick>1666051681</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="89" Source="flightFinder" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf248.xml]]></Path>
+<ASHilite><![CDATA[-245716832]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Economy"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:01]]></Time>
+<TimeTick>1666051681</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="91" Source="flightFinder" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf249.xml]]></Path>
+<ASHilite><![CDATA[-245716304]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["1"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:01]]></Time>
+<TimeTick>1666051681</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="93" Source="flightFinder" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf250.xml]]></Path>
+<ASHilite><![CDATA[-245716112]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:02]]></Time>
+<TimeTick>1666051682</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="95" Source="flightFinder" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf251.xml]]></Path>
+<ASHilite><![CDATA[0]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="82" status="Passed" Source="flightFinder" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act3\Row0\ssf244.xml]]></Path>
+<ASHilite><![CDATA[331372]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:07:59" eTime="10/17/2022 - 20:08:02" passed="1" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="80" status="Passed" >
+<Disp><![CDATA[flightFinder Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T56">
+<AName><![CDATA[selectFlight]]></AName>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:02]]></Time>
+<TimeTick>1666051682</TimeTick>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA["1", "0"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:02]]></Time>
+<TimeTick>1666051682</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="100" Source="selectFlight" SourceLine="0" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act4\Row0\ssf253.xml]]></Path>
+<ASHilite><![CDATA[-181050984]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:03]]></Time>
+<TimeTick>1666051683</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="102" Source="selectFlight" SourceLine="1" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act4\Row0\ssf254.xml]]></Path>
+<ASHilite><![CDATA[0]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="99" Source="selectFlight" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act4\Row0\ssf252.xml]]></Path>
+<ASHilite><![CDATA[331372]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:08:02" eTime="10/17/2022 - 20:08:03" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="97" >
+<Disp><![CDATA[selectFlight Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T60">
+<AName><![CDATA[flightConfirmation]]></AName>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[Micro Focus MyFlight Sample]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:03]]></Time>
+<TimeTick>1666051683</TimeTick>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Sasuke Uchiha"]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:03]]></Time>
+<TimeTick>1666051683</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="107" Source="flightConfirmation" SourceLine="0" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf256.xml]]></Path>
+<ASHilite><![CDATA[-181049400]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA[passengerName]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfEdit]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:04]]></Time>
+<TimeTick>1666051684</TimeTick>
+<HtmlStep rID="T64">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "passengerName": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 10/17/2022 - 20:08:04</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">passengerName Results&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<TD class="Text" Title="">text&nbsp;</TD>
+				<TD class="Text" Title="">Sasuke Uchiha&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1666051684</TimeTick>
+<NodeArgs eType="Verification" icon="7" nRep="109" status="Passed" Source="flightConfirmation" SourceLine="1" >
+<Disp><![CDATA[Checkpoint "passengerName"]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf258.xml]]></Path>
+<ASHilite><![CDATA[-181049400]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="7" nRep="108" status="Passed" Source="flightConfirmation" SourceLine="1" >
+<Disp><![CDATA[passengerName]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf257.xml]]></Path>
+<ASHilite><![CDATA[-181049400]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[progBar.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["value", 10, 0, 20000]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:05]]></Time>
+<TimeTick>1666051685</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="111" status="Warning" Source="flightConfirmation" SourceLine="2" >
+<Disp><![CDATA[progBar.WaitProperty]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf259.xml]]></Path>
+<ASHilite><![CDATA[1960559312]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[Stop Run]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[10/17/2022 - 20:08:05]]></Time>
+<TimeTick>1666051685</TimeTick>
+<NodeArgs eType="General" icon="14" nRep="112" status="Information" >
+<Disp><![CDATA[Stop Run]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="106" status="Warning" Source="flightConfirmation" SourceLine="0" >
+<Disp><![CDATA[Micro Focus MyFlight Sample]]></Disp>
+<BtmPane vType="ViewerGen.SSViewerGen" >
+<Path><![CDATA[ZIP::Act5\Row0\ssf255.xml]]></Path>
+<ASHilite><![CDATA[331372]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Summary sTime="10/17/2022 - 20:08:03" eTime="10/17/2022 - 20:08:05" passed="1" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="104" status="Warning" >
+<Disp><![CDATA[flightConfirmation Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="64" status="Warning" >
+<Disp><![CDATA[Assignment_UFT_parameter Iteration 2 (Row 2)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="10/17/2022 - 20:07:22" eTime="10/17/2022 - 20:08:05" passed="7" failed="0" warnings="2" stopped="True" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Warning" >
+<Disp><![CDATA[Test Assignment_UFT_parameter Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
